@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caixa eletronico</title>
+</head>
+<style>
+  .principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  input,
+  select {
+    max-width: 300px;
+    min-width: 250px;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  #botao-ok {
+    margin-top: 8px;
+  }
+</style>
+
+<body>
+  <h1>Caixa eletronico</h1>
+  <div class="principal">
+    <label>tipo da transacao</label>
+    <select name="transacao" id="transacao">
+      <option value="saque">saque</option>
+      <option value="deposito">deposito</option>
+    </select>
+    <label>dinheiro</label>
+    <input type="text" id="entrada">
+    <input type="button" id="botao-ok" value="ok">
+  </div>
+  <div class="row">
+    <div class="container-saldo">
+      <p class="saldo">R$ 100,00</p>
+    </div>
+    <div class="container-extrato">
+      <p class="extrato">extrato</p>
+    </div>
+  </div>
+</body>
+<script>
+  const transacao = documento.querySelector('#transacao');
+  const entrada = document.querySelector('#entrada');
+  const botaoOk = document.querySelector('#botao-ok');
+  const saldo = documento.querySelector('.saldo');
+
+  botaoOk.addEventListener('click', () => {
+
+  })
+
+</script>
+
+</html>
