@@ -1,0 +1,18 @@
+
+
+body {
+  background-color: #6defef;
+}
+
+#entrada1 {
+  border-radius: 8px;
+  border: none;
+}
+#entrada2 {
+  border-radius: 8px;
+  border: none;
+}
+#soma {
+  border-radius: 8px;
+  border: none;
+}
