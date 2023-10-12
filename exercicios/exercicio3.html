@@ -48,7 +48,7 @@
   </div>
   <div class="row">
     <div class="container-saldo">
-      <p class="saldo">R$ 100,00</p>
+      <p class="saldo">R$ </p>
     </div>
     <div class="container-extrato">
       <p class="extrato">extrato</p>
@@ -56,14 +56,32 @@
   </div>
 </body>
 <script>
-  const transacao = documento.querySelector('#transacao');
+  const transacao = document.querySelector('#transacao');
   const entrada = document.querySelector('#entrada');
   const botaoOk = document.querySelector('#botao-ok');
-  const saldo = documento.querySelector('.saldo');
+  const saldo = document.querySelector('.saldo');
+
+  const dadosBancarios = {
+    saldo: 0
+  }
+  saldo.textContent += dadosBancarios.saldo;
 
   botaoOk.addEventListener('click', () => {
+    if (transacao.value == 'deposito') {
+      if ( Number(entrada.value) > 0) {
+        dadosBancarios.saldo += Number(entrada.value);
+      }
+      
+    } else {
+      if (dadosBancarios.saldo >= Number(entrada.value)) {
+        dadosBancarios.saldo -= Number(entrada.value);
+      }
+    }
 
+    saldo.textContent = `R$ ${dadosBancarios.saldo}`;
   })
+
+
 
 </script>
 
