@@ -1,0 +1,28 @@
+@import url(../style.css);
+
+
+
+nav {
+  background-color: #6defef;
+  width: 100%;
+}
+
+nav>ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+}
+
+nav>ul a {
+  text-decoration: none;
+}
+
+footer {
+  background-color: #6defef;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+}

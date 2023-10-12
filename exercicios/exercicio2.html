@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lista</title>
+</head>
+
+<body>
+  <h1>Lista de Nomes</h1>
+  <input type="text" id="nome">
+  <button id="adicionar">adicionar</button>
+  <ul id="lista">
+    <li>
+      item
+    </li>
+  </ul>
+</body>
+<script>
+  const nome = document.querySelector('#nome');
+  const adicionar = document.querySelector('#adicionar');
+  const lista = document.querySelector('#lista');
+
+  adicionar.addEventListener('click', () => {
+    if (nome.value === '') {
+      return
+    }
+    const li = document.createElement('li');
+    li.textContent = nome.value;
+    lista.append(li);
+    nome.value = '';
+    setTimeout(() => {
+      nome.focus(); // colocar o foco na entrada nome
+    }, 100);
+  })
+
+  nome.addEventListener('keypress', event => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      
+      if (nome.value === '') {
+        return
+      }
+      const li = document.createElement('li');
+      li.textContent = nome.value;
+      lista.append(li);
+      nome.value = '';
+      setTimeout(() => {
+        nome.focus(); // colocar o foco na entrada nome
+      }, 100);
+    }
+  })
+</script>
+
+</html>

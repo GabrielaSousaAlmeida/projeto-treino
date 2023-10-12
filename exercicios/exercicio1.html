@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora</title>
+</head>
+
+<body>
+  <h1>Calculadora</h1>
+  <input type="text" id="entrada1">
+  <input type="text" id="entrada2">
+  <input type="button" value="soma" id="soma">
+  <p id="resultado"></p>
+</body>
+<script>
+  const entrada1 = document.querySelector('#entrada1');
+  const entrada2 = document.querySelector('#entrada2');
+  const soma = document.querySelector('#soma');
+  const resultado = document.querySelector('#resultado');
+
+  soma.addEventListener('click', () => {
+    resultado.textContent = `o resultado da soma e: ${Number(entrada1.value) + Number(entrada2.value)}`
+  })
+
+</script>
+
+</html>

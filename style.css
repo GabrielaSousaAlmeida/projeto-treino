@@ -1,0 +1,59 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&family=Sriracha&display=swap');
+
+  ::root {
+    --cor-principal: deepskyblue;
+  }
+
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: roboto;
+  background: linear-gradient(to right
+  bottom,#bdbdff, lightblue, white) no-repeat;
+  padding: 0;
+  margin: 0;
+
+}
+.principal {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  gap: 8px;
+  background-color: var(--cor-principal);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+input {
+  border-radius: 12px;
+  border: none;
+}
+
+input::placeholder {
+  text-align: center;
+}
+
+#entrar {
+  background-color: aqua;
+}
+#entrar:hover {
+ background-color: aquamarine;
+}
+
+dialog {
+  border: none;
+  border-radius: 8px;
+  width: 150px;
+  position: absolute;
+  top:200px;
+  text-align: center;
+}
+
+dialog::backdrop {
+  background-color: white;
+  opacity: 0.9;
+}
