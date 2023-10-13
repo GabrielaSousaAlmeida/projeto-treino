@@ -32,6 +32,23 @@
   #botao-ok {
     margin-top: 8px;
   }
+
+  .container-saldo {
+    background-color: lightgreen;
+  }
+
+  .container-extrato {
+    background-color: lemonchiffon;
+    overflow-x: auto;
+  }
+
+  .container-saldo,
+  .container-extrato {
+    width: 200px;
+    border-radius: 8px;
+    text-align: center;
+    height: 200px;
+  }
 </style>
 
 <body>
@@ -48,40 +65,96 @@
   </div>
   <div class="row">
     <div class="container-saldo">
-      <p class="saldo">R$ </p>
+      <h2>SALDO</h2>
+      <p class="saldo"></p>
     </div>
     <div class="container-extrato">
-      <p class="extrato">extrato</p>
+      <h2>EXTRATO</h2>
+      <!-- <div class="transacao-item">
+        <p class="transacao-data">data</p>
+        <p class="transacao-nome">nome</p>
+        <p class="transacao-saldo">saldo</p>
+        <p class="transacao-tipo">tipo transacao</p>
+      </div> -->
     </div>
   </div>
 </body>
 <script>
-  const transacao = document.querySelector('#transacao');
-  const entrada = document.querySelector('#entrada');
+  const tipoDeTransacao = document.querySelector('#transacao');
+  const valorTransacao = document.querySelector('#entrada');
   const botaoOk = document.querySelector('#botao-ok');
   const saldo = document.querySelector('.saldo');
+  const containerExtrato = document.querySelector('.container-extrato');
+
 
   const dadosBancarios = {
+    nomeDoUsuario: 'Gabriela',
     saldo: 0
   }
-  saldo.textContent += dadosBancarios.saldo;
+
+  const transacao = {
+    data: new Date(),
+    nomeDoUsuario: dadosBancarios.nomeDoUsuario,
+    tipo: '',
+    valor: 0
+  }
+
+  atualizarSaldoNaTela();
 
   botaoOk.addEventListener('click', () => {
-    if (transacao.value == 'deposito') {
-      if ( Number(entrada.value) > 0) {
-        dadosBancarios.saldo += Number(entrada.value);
+    const transacaoÉDeposito = tipoDeTransacao.value == 'deposito';
+
+    const saldoInicial = dadosBancarios.saldo;
+
+    if (transacaoÉDeposito) {
+      if (Number(valorTransacao.value) > 0) {
+        dadosBancarios.saldo += Number(valorTransacao.value);
       }
-      
+
     } else {
-      if (dadosBancarios.saldo >= Number(entrada.value)) {
-        dadosBancarios.saldo -= Number(entrada.value);
+      if (dadosBancarios.saldo >= Number(valorTransacao.value)) {
+        dadosBancarios.saldo -= Number(valorTransacao.value);
       }
     }
+    atualizarSaldoNaTela();
 
-    saldo.textContent = `R$ ${dadosBancarios.saldo}`;
+    if (dadosBancarios.saldo != saldoInicial) {
+      transacao.data = new Date().toLocaleString('pt-br');
+      transacao.tipo = tipoDeTransacao.value;
+      transacao.valor = valorTransacao.value;
+
+      const transacaoItem = document.createElement('div');
+      transacaoItem.textContent += '----------------------------------';
+      transacaoItem.classList.add('transacao-item')
+      const transacaoData = document.createElement('p');
+      transacaoData.textContent = `data: ${transacao.data}`
+      transacaoData.classList.add('transacao-data')
+      const transacaoNome = document.createElement('p');
+      transacaoNome.textContent = `nome: ${transacao.nomeDoUsuario}`
+      transacaoNome.classList.add('transacao-nome')
+      const transacaoSaldo = document.createElement('p');
+      transacaoSaldo.textContent = `valor: ${transacao.valor}`
+      transacaoSaldo.classList.add('transacao-valor')
+      const transacaoTipo = document.createElement('p');
+      transacaoTipo.textContent = `tipo: ${transacao.tipo}`
+      transacaoTipo.classList.add('transacao-tipo')
+
+      
+
+      transacaoItem.append(
+        transacaoData, transacaoNome, transacaoSaldo, transacaoTipo
+      )
+
+      containerExtrato.append(transacaoItem)
+    }
+
+
+
   })
 
-
+  function atualizarSaldoNaTela() {
+    saldo.textContent = `R$ ${dadosBancarios.saldo.toFixed(2)}`;
+  }
 
 </script>
 
