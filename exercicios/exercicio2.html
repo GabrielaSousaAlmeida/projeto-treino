@@ -13,9 +13,7 @@
   <input type="text" id="nome">
   <button id="adicionar">adicionar</button>
   <ul id="lista">
-    <li>
-      item
-    </li>
+    <li>item</li>
   </ul>
 </body>
 <script>
@@ -24,9 +22,19 @@
   const lista = document.querySelector('#lista');
 
   adicionar.addEventListener('click', () => {
+    const nomesDaLista = document.querySelectorAll('li');
+
+
+    nomesDaLista.forEach(li => { // ForEanch percorre a lista.
+      if (nome.value === li.textContent) {
+        nome.value = ""
+      }
+    })
+
     if (nome.value === '') {
       return
     }
+
     const li = document.createElement('li');
     li.textContent = nome.value;
     lista.append(li);
@@ -38,8 +46,17 @@
 
   nome.addEventListener('keypress', event => {
     if (event.key === 'Enter') {
-      event.preventDefault();
-      
+      event.preventDefault(); // corta o comportamento patrão do evento..
+
+      const nomesDaLista = document.querySelectorAll('li');
+
+
+      nomesDaLista.forEach(li => { // ForEanch percorre a lista.
+        if (nome.value === li.textContent) {
+          nome.value = ""
+        }
+      })
+
       if (nome.value === '') {
         return
       }
@@ -47,7 +64,7 @@
       li.textContent = nome.value;
       lista.append(li);
       nome.value = '';
-      setTimeout(() => {
+      setTimeout(() => { // colocando um tempo de espera antes de executa a função..
         nome.focus(); // colocar o foco na entrada nome
       }, 100);
     }
